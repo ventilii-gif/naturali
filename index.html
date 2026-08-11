@@ -2022,12 +2022,11 @@ const QSTATE={};
 /* ============================================================
    8.0 SESSIONE STUDENTE — nome, cronometri, report
    ============================================================ */
-const DEST_EMAIL="ventilii@gmail.com";
-/* Incolla qui, fra i doppi apici, l'URL della Web App di Google Apps Script
-   (finisce con /exec) DEDICATA A QUESTA APP DEI NUMERI NATURALI — diversa da
-   quella dell'app delle frazioni, così i dati restano separati.
-   Se resta vuoto, l'app usa solo email e download del report. */
-const REPORT_ENDPOINT="";
+/* URL della Web App di Google Apps Script (finisce con /exec) dedicata a questa
+   app dei numeri naturali: i report dei quiz vengono registrati automaticamente
+   nel Foglio Google collegato (dati separati dall'app delle frazioni).
+   Per cambiare foglio, incollare qui il nuovo URL /exec. */
+const REPORT_ENDPOINT="https://script.google.com/macros/s/AKfycbznMaiiZadS9_3YGzzehne78aZ8i6QbA8gEpYagPBYgNvGiVUsHqk48ouOvDiXAeQHchg/exec";
 const APP_TITLE="I numeri naturali";
 const SESSION={ name:"", startedAt:new Date().toISOString(), subtabTime:{} };
 
@@ -2204,13 +2203,6 @@ function postReport(areaId){
   });
 }
 function slug(s){ return (s||"studente").toLowerCase().normalize("NFD").replace(/[^\w]+/g,"_").replace(/^_|_$/g,""); }
-function sendReportEmail(areaId){
-  const area=AREAS.find(a=>a.id===areaId);
-  const body=buildReport(areaId);
-  const subject="Report quiz "+area.title+" ("+APP_TITLE+") — "+(SESSION.name||"studente");
-  saveSession();
-  window.location.href="mailto:"+DEST_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
-}
 function downloadReport(areaId){
   const body=buildReport(areaId);
   const blob=new Blob([body],{type:"text/plain;charset=utf-8"});
@@ -2530,50 +2522,32 @@ function renderSummary(card,ar,qs,st,final){
   });
   card.appendChild(list);
 
-  /* invio del report all'insegnante */
-  const online = !!REPORT_ENDPOINT;
+  /* invio del report all'insegnante — Foglio Google */
   const rep=document.createElement("div");rep.className="report-box";
   rep.innerHTML="<span class='lab'>Invio del report all'insegnante</span>"+
-    "<p>"+(online
-      ? "Invia all'insegnante il resoconto della sessione: nome, tempo di permanenza in ogni sottoscheda, e per questo quiz le domande con le risposte date (corrette o errate) e il tempo impiegato."
-      : "Invia a <strong>"+DEST_EMAIL+"</strong> il resoconto della sessione: nome, tempo di permanenza in ogni sottoscheda, e per questo quiz le domande con le risposte date (corrette o errate) e il tempo impiegato.")+"</p>";
+    "<p>Invia all'insegnante il resoconto della sessione: nome, tempo di permanenza in ogni sottoscheda, e per questo quiz le domande con le risposte date (corrette o errate) e il tempo impiegato. Il report viene registrato automaticamente nel Foglio Google dell'insegnante.</p>";
   const rrow=document.createElement("div");rrow.className="btnrow";
-
-  if(online){
-    const sendBtn=document.createElement("button");
-    sendBtn.className="btn primary";sendBtn.type="button";sendBtn.textContent="Invia report all'insegnante";
-    const status=document.createElement("span");
-    status.style.cssText="font-family:ui-sans-serif,system-ui,sans-serif;font-size:.85rem;font-weight:600;align-self:center";
-    sendBtn.addEventListener("click",()=>{
-      if(!SESSION.name){ openGate(); return; }
-      sendBtn.disabled=true; status.style.color="var(--muted)"; status.textContent="Invio in corso…";
-      saveSession();
-      postReport(ar.id)
-        .then(()=>{ status.style.color="var(--ok)"; status.textContent="Report inviato. Grazie!"; })
-        .catch(()=>{ sendBtn.disabled=false; status.style.color="var(--warn)";
-          status.textContent="Invio non riuscito: controlla la connessione o usa «Scarica report»."; });
-    });
-    const dlBtn=document.createElement("button");
-    dlBtn.className="btn";dlBtn.type="button";dlBtn.textContent="Scarica report";
-    dlBtn.addEventListener("click",()=>downloadReport(ar.id));
-    rrow.appendChild(sendBtn);rrow.appendChild(dlBtn);
-    rep.appendChild(rrow);rep.appendChild(status);
-    const rhint=document.createElement("p");rhint.className="report-hint";
-    rhint.textContent="Premi «Invia report all'insegnante»: il resoconto viene registrato automaticamente. In caso di problemi di rete, usa «Scarica report» come riserva.";
-    rep.appendChild(rhint);
-  }else{
-    const mailBtn=document.createElement("button");
-    mailBtn.className="btn primary";mailBtn.type="button";mailBtn.textContent="Invia report via email";
-    mailBtn.addEventListener("click",()=>{ if(!SESSION.name){ openGate(); return; } sendReportEmail(ar.id); });
-    const dlBtn=document.createElement("button");
-    dlBtn.className="btn";dlBtn.type="button";dlBtn.textContent="Scarica report";
-    dlBtn.addEventListener("click",()=>downloadReport(ar.id));
-    rrow.appendChild(mailBtn);rrow.appendChild(dlBtn);
-    rep.appendChild(rrow);
-    const rhint=document.createElement("p");rhint.className="report-hint";
-    rhint.textContent="Il pulsante email apre il tuo programma di posta con il messaggio già pronto: devi solo premere «Invia». Se il dispositivo non ha un programma di posta, usa «Scarica report» e allega il file a una tua email.";
-    rep.appendChild(rhint);
-  }
+  const sendBtn=document.createElement("button");
+  sendBtn.className="btn primary";sendBtn.type="button";sendBtn.textContent="Invia report all'insegnante";
+  const status=document.createElement("span");
+  status.style.cssText="font-family:ui-sans-serif,system-ui,sans-serif;font-size:.85rem;font-weight:600;align-self:center";
+  sendBtn.addEventListener("click",()=>{
+    if(!SESSION.name){ openGate(); return; }
+    sendBtn.disabled=true; status.style.color="var(--muted)"; status.textContent="Invio in corso…";
+    saveSession();
+    postReport(ar.id)
+      .then(()=>{ status.style.color="var(--ok)"; status.textContent="Report inviato al Foglio Google. Grazie!"; })
+      .catch(()=>{ sendBtn.disabled=false; status.style.color="var(--warn)";
+        status.textContent="Invio non riuscito: controlla la connessione o usa «Scarica report»."; });
+  });
+  const dlBtn=document.createElement("button");
+  dlBtn.className="btn";dlBtn.type="button";dlBtn.textContent="Scarica report";
+  dlBtn.addEventListener("click",()=>downloadReport(ar.id));
+  rrow.appendChild(sendBtn);rrow.appendChild(dlBtn);
+  rep.appendChild(rrow);rep.appendChild(status);
+  const rhint=document.createElement("p");rhint.className="report-hint";
+  rhint.textContent="Premi «Invia report all'insegnante»: il resoconto viene registrato automaticamente nel Foglio Google. In caso di problemi di rete, usa «Scarica report» come riserva.";
+  rep.appendChild(rhint);
   card.appendChild(rep);
 
   const row=document.createElement("div");row.className="btnrow";

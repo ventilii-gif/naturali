@@ -23,9 +23,9 @@ Ogni scheda ha un'animazione su `<canvas>` ricalcolata in tempo reale: valore po
 
 ## Quiz e report per l'insegnante
 
-I quiz di sezione danno un feedback immediato e incoraggiante; il quiz riepilogativo mostra le correzioni solo alla fine. Al termine di ogni quiz è possibile inviare all'insegnante (`ventilii@gmail.com`) un report con nome, tempi di permanenza e risposte, via email o scaricando un file di testo.
+I quiz di sezione danno un feedback immediato e incoraggiante; il quiz riepilogativo mostra le correzioni solo alla fine. Al termine di ogni quiz lo studente può **inviare il report all'insegnante**: nome, tempo di permanenza in ogni sottoscheda e dettaglio delle risposte vengono registrati automaticamente in un **Foglio Google** (con «Scarica report» come alternativa locale).
 
-> Per attivare la raccolta automatica dei report in un Foglio Google, incollare l'URL di una Web App di Google Apps Script **dedicata a questa app** nella costante `REPORT_ENDPOINT` in `index.html` (lasciata vuota per tenere i dati separati dall'app delle frazioni). Se resta vuota, funzionano comunque email e download.
+La raccolta usa una Web App di Google Apps Script dedicata a questa app, il cui URL `/exec` è impostato nella costante `REPORT_ENDPOINT` in `index.html`. Il codice dello script è in [`google-apps-script.gs`](google-apps-script.gs); per cambiare foglio basta creare una nuova Web App e sostituire l'URL. I dati restano separati da quelli dell'app delle frazioni (il campo `app` del payload identifica l'applicazione).
 
 ## Pubblicazione
 
