@@ -509,6 +509,7 @@ function fallbackMath(root){
     .replace(/\\in/g,"∈").replace(/\\notin/g,"∉").replace(/\\mathbb\{([A-Z])\}/g,"$1")
     .replace(/\\text\{([^{}]*)\}/g,"$1").replace(/\\mathrm\{([^{}]*)\}/g,"$1")
     .replace(/\\lfloor/g,"⌊").replace(/\\rfloor/g,"⌋")
+    .replace(/\\dots|\\ldots|\\cdots/g,"…")
     .replace(/\^\{([^{}]*)\}/g,"^($1)").replace(/_\{([^{}]*)\}/g,"_$1")
     .replace(/[{}]/g,"").replace(/\\[a-zA-Z]+/g,"");
   };
@@ -1658,6 +1659,11 @@ $$ b\\mid a \\quad\\Longleftrightarrow\\quad \\text{esiste } k\\in\\mathbb{N} \\
 <p>Ogni numero naturale maggiore di 1 si può scrivere come <strong>prodotto di numeri primi</strong>, e questa <span class="def">scomposizione</span> è <em>unica</em> a meno dell'ordine dei fattori.</p>
 $$ 360 = 2^{3}\\cdot 3^{2}\\cdot 5 $$
 <p>Per scomporre si divide ripetutamente per i primi, dal più piccolo: $360:2=180$, $180:2=90$, $90:2=45$, $45:3=15$, $15:3=5$, $5:5=1$. La scomposizione in fattori primi è la "carta d'identità" di un numero, e sarà lo strumento chiave per MCD e mcm.</p>
+
+<div class="box">
+<span class="lab">La dimostrazione di Euclide, in breve</span>
+<p style="margin:0">Supponiamo per assurdo che i primi siano solo un numero finito: $p_1, p_2, \\dots, p_n$. Formiamo il numero $N=p_1\\cdot p_2\\cdot\\dots\\cdot p_n+1$, cioè il prodotto di tutti quei primi aumentato di 1. Diviso per uno qualunque dei $p_i$, il numero $N$ dà sempre resto 1: quindi nessuno dei primi elencati lo divide. Allora $N$ è esso stesso primo, oppure ha un divisore primo che non compare nell'elenco: in entrambi i casi esiste un primo fuori dalla lista, contro l'ipotesi. Perciò i numeri primi non possono essere in numero finito: sono infiniti.</p>
+</div>
 </div>`},
    {id:"sim",label:"Simulazione",type:"sim",sim:"divisibilita",
     intro:"Il crivello di Eratostene, passo per passo. Lascia scorrere l'animazione oppure usa «Passo ▶» e «◀ Passo» per procedere una cancellazione alla volta, e «Primo successivo ⏭» per completare i multipli del primo in corso. Alla fine restano accesi i 25 numeri primi minori di 100."},
@@ -2109,7 +2115,7 @@ function stripMath(s){
       .replace(/\\Longleftrightarrow|\\iff/g,"<=>").replace(/\\Rightarrow/g,"=>")
       .replace(/\\in/g,"∈").replace(/\\notin/g,"∉").replace(/\\mathbb\{([A-Z])\}/g,"$1")
       .replace(/\\text\{([^{}]*)\}/g,"$1").replace(/\\mathrm\{([^{}]*)\}/g,"$1").replace(/\\cancel\{([^{}]*)\}/g,"$1")
-      .replace(/\\lfloor/g,"").replace(/\\rfloor/g,"")
+      .replace(/\\lfloor/g,"").replace(/\\rfloor/g,"").replace(/\\dots|\\ldots|\\cdots/g,"…")
       .replace(/\^\{([^{}]*)\}/g,"^($1)").replace(/_\{([^{}]*)\}/g,"_$1")
       .replace(/\^(-?\w)/g,"^$1")
       .replace(/[{}]/g,"").replace(/\\[a-zA-Z]+/g,"").replace(/\s+/g," ").trim();
