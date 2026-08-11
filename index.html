@@ -976,11 +976,18 @@ SIMS.moltiplicazione={
              : "Si riempie lo schieramento riga per riga: "+a+" colonne e "+b+" righe.")+
         (done?" <strong>Premi «Riavvia animazione» per rivederla.</strong>":"")+"</p>",done);
     }else{
-      const q=Math.floor(a/b), r=a%b, groups=q+(r>0?1:0);
-      const gcols=Math.max(1,groups);
-      const cellW=Math.min((W-pad*2)/gcols-8,46), cell=Math.min(cellW,(H*0.5)/b,40);
-      const blockW=cell, blockGap=Math.max(10,cell*0.4);
-      const totW=gcols*blockW+(gcols-1)*blockGap, gx=(W-totW)/2, gy=H*0.16;
+      const q=Math.floor(a/b), r=a%b, groups=q+(r>0?1:0), gcols=Math.max(1,groups);
+      const availW=W-pad*2;
+      let cell=Math.min(40,(H*0.44)/b);
+      let blockGap=Math.max(cell*1.4,46);                /* colonne ben distanziate */
+      let totW=gcols*cell+(gcols-1)*blockGap;
+      if(totW>availW){                                   /* tanti gruppi: stringi prima il gap, poi la cella */
+        blockGap=Math.max(12,(availW-gcols*cell)/Math.max(1,gcols-1));
+        totW=gcols*cell+(gcols-1)*blockGap;
+        if(totW>availW){ cell=Math.max(8,(availW-(gcols-1)*12)/gcols); blockGap=12; totW=gcols*cell+(gcols-1)*blockGap; }
+      }
+      const blockW=cell, gx=(W-totW)/2, gy=H*0.18;
+      const showLabels=blockGap>=26;                     /* niente etichette se sono troppo strette */
       const shownCells=Math.min(a,Math.floor(clamp((t-0.3)/(a*0.15),0,1)*a));
       let drawn=0;
       for(let g=0;g<gcols;g++){
@@ -999,9 +1006,9 @@ SIMS.moltiplicazione={
           ctx.fillStyle=hex2rgba(isRem?THEME.warn:THEME.fa,.32);ctx.fill();
           ctx.strokeStyle=isRem?THEME.warn:THEME.fa;ctx.lineWidth=1;ctx.stroke();
         }
-        label(ctx,isRem?("resto "+r):("gruppo "+(g+1)),bx+blockW/2,gy+cell*b+18,11,isRem?THEME.warn:THEME.muted,"center",600);
+        if(showLabels) label(ctx,isRem?("resto "+r):("gruppo "+(g+1)),bx+blockW/2,gy+cell*b+18,11,isRem?THEME.warn:THEME.muted,"center",600);
       }
-      label(ctx,a+" caselle in gruppi da "+b,W/2,gy-16,12.5,THEME.muted,"center",600);
+      label(ctx,a+" caselle in gruppi da "+b,W/2,18,12.5,THEME.muted,"center",600);
       label(ctx,a+" : "+b+" = "+q+"  (resto "+r+")",W/2,H-30,14,THEME["accent-ink"],"center",700);
       label(ctx,"verifica: "+b+" · "+q+" + "+r+" = "+a,W/2,H-12,12,THEME.muted,"center",600);
       const done=t>=this.duration(v)-1e-6;
