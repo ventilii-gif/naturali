@@ -375,6 +375,15 @@ footer{border-top:1px solid var(--line);background:var(--surface);color:var(--mu
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
 }
+
+.ex-check{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0 12px}
+.ex-in{font-family:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;font-size:15px;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-width:150px}
+.ex-in:focus{outline:none;border-color:var(--accent)}
+.ex-fb{font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.ex-fb.ok{color:var(--ok)}
+.ex-fb.no{color:var(--warn)}
+.ex-fb.warn{color:var(--muted)}
+.ex-fb svg{width:16px;height:16px}
 </style>
 </head>
 <body>
@@ -442,6 +451,8 @@ footer{border-top:1px solid var(--line);background:var(--surface);color:var(--mu
 /* ============================================================
    1. UTILITÀ NUMERICHE — aritmetica sui numeri naturali
    ============================================================ */
+function parseAnsNum(str){str=(str||'').trim().replace(/\s+/g,'').replace(',', '.');if(str==='')return null;var m=str.match(/^(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)$/);if(m){var d=parseFloat(m[2]);if(d===0)return null;return parseFloat(m[1])/d;}var v=parseFloat(str);return isNaN(v)?null:v;}
+function checkExAns(str,a){var v=parseAnsNum(str);if(v===null)return null;var target=a[0]/a[1];return Math.abs(v-target)<=Math.max(1e-9,5e-3*Math.max(1,Math.abs(target)));}
 function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){const t=a%b;a=b;b=t;}return a;}
 function lcm(a,b){if(a===0||b===0)return 0;return Math.abs(a/gcd(a,b)*b);}
 function isPrimeN(n){
@@ -1460,7 +1471,7 @@ $$ a-b=(a+k)-(b+k)=(a-k)-(b-k) $$
    {id:"esercizi",label:"Esercizi",type:"ex",items:[
      {t:"Calcola a mente $37+48+63$ scegliendo l'ordine più comodo.",
       hs:["Per le proprietà commutativa e associativa puoi riordinare e raggruppare gli addendi.","Cerca due numeri che insieme diano un multiplo di 10: $37+63=100$."],
-      s:"$37+63=100$ e poi $100+48=148$. Riordinare gli addendi è lecito grazie alle proprietà commutativa e associativa."},
+      s:"$37+63=100$ e poi $100+48=148$. Riordinare gli addendi è lecito grazie alle proprietà commutativa e associativa.",a:[148,1]},
      {t:"Stabilisci quali di queste differenze esistono in $\\mathbb{N}$: $15-9$, $9-15$, $20-20$.",
       hs:["In $\\mathbb{N}$ la differenza $a-b$ esiste solo se $a\\geq b$.","$20-20$: minuendo e sottraendo sono uguali."],
       s:"$15-9=6$ esiste; $9-15$ non esiste in $\\mathbb{N}$ (sarebbe negativo); $20-20=0$ esiste ed è lo zero."},
@@ -1469,10 +1480,10 @@ $$ a-b=(a+k)-(b+k)=(a-k)-(b-k) $$
       s:"$47+37=84$: la prova torna, quindi $84-37=47$ è corretto."},
      {t:"Usa la proprietà invariantiva per calcolare $91-58$ senza prestiti.",
       hs:["Aggiungi lo stesso numero a minuendo e sottraendo per rendere \"tondo\" il sottraendo.","Somma 2 a entrambi: $58$ diventa $60$."],
-      s:"$91-58=(91+2)-(58+2)=93-60=33$. La differenza non cambia perché aumentano entrambi i termini della stessa quantità."},
+      s:"$91-58=(91+2)-(58+2)=93-60=33$. La differenza non cambia perché aumentano entrambi i termini della stessa quantità.",a:[33,1]},
      {t:"In un cinema con 250 posti sono occupate 4 file da 18 posti e altre 96 poltrone. Quanti posti restano liberi?",
       hs:["Prima trova i posti occupati: le file danno $4\\cdot 18$, a cui aggiungere 96.","I liberi sono la differenza fra i posti totali e quelli occupati."],
-      s:"Occupati: $4\\cdot 18+96=72+96=168$. Liberi: $250-168=82$ posti."},
+      s:"Occupati: $4\\cdot 18+96=72+96=168$. Liberi: $250-168=82$ posti.",a:[82,1]},
      {t:"Trova il numero naturale $x$ in ciascun caso: se $x+29=74$, quanto vale $x$? E se $53-x=18$?",
       hs:["Ogni uguaglianza con addizione o sottrazione si risolve con l'operazione inversa.","Da $x+29=74$ ricavi $x=74-29$. Da $53-x=18$ ricavi $x=53-18$."],
       s:"Da $x+29=74$: $x=74-29=45$. Da $53-x=18$: $x=53-18=35$. Si usa sempre l'operazione inversa per isolare $x$."}
@@ -1526,7 +1537,7 @@ $$ a=b\\cdot q+r, \\qquad 0\\leq r&lt;b $$
    {id:"esercizi",label:"Esercizi",type:"ex",items:[
      {t:"Calcola $25\\cdot 16$ usando la proprietà distributiva (senza incolonnare).",
       hs:["Scomponi uno dei fattori in una somma comoda, per esempio $16=10+6$.","Applica $25\\cdot(10+6)=25\\cdot 10+25\\cdot 6$."],
-      s:"$25\\cdot 16=25\\cdot(10+6)=250+150=400$. In alternativa $16=4\\cdot 4$ e $25\\cdot 4=100$, quindi $100\\cdot 4=400$."},
+      s:"$25\\cdot 16=25\\cdot(10+6)=250+150=400$. In alternativa $16=4\\cdot 4$ e $25\\cdot 4=100$, quindi $100\\cdot 4=400$.",a:[400,1]},
      {t:"Esegui la divisione con resto $59:7$ e scrivi la relazione $a=b\\cdot q+r$.",
       hs:["Cerca il più grande multiplo di 7 che non supera 59.","$7\\cdot 8=56$; quanto manca a 59?"],
       s:"$59:7$ dà $q=8$ e $r=3$, perché $59=7\\cdot 8+3$ con $0\\leq 3<7$."},
@@ -1535,7 +1546,7 @@ $$ a=b\\cdot q+r, \\qquad 0\\leq r&lt;b $$
       s:"$84:12=7$ con resto $0$ (esatta: 12 divide 84). $85:12=7$ con resto $1$, perché $85=12\\cdot 7+1$."},
      {t:"Un resto vale 5 in una divisione per 9, con quoziente 12. Qual era il dividendo?",
       hs:["Usa la relazione $a=b\\cdot q+r$.","Qui $b=9$, $q=12$, $r=5$."],
-      s:"$a=9\\cdot 12+5=108+5=113$. Verifica: $113:9=12$ con resto $5$, e $5<9$."},
+      s:"$a=9\\cdot 12+5=108+5=113$. Verifica: $113:9=12$ con resto $5$, e $5<9$.",a:[113,1]},
      {t:"Perché $0:5=0$ mentre $5:0$ non ha significato? Spiega con la definizione di divisione.",
       hs:["$a:b=q$ significa che $q\\cdot b=a$.","Prova a cercare $q$ in entrambi i casi: quando esiste ed è unico?"],
       s:"$0:5=0$ perché $0\\cdot 5=0$: il quoziente esiste ed è 0. Invece $5:0=q$ richiederebbe $q\\cdot 0=5$, impossibile perché $q\\cdot 0=0$ per ogni $q$. Per questo la divisione per 0 non è definita."},
@@ -1607,16 +1618,16 @@ $$ a^{n}=\\underbrace{a\\cdot a\\cdot \\dots \\cdot a}_{n\\ \\text{fattori}} \\q
       s:"$5^{7}\\cdot 5^{2}=5^{9}$ e $5^{7}:5^{2}=5^{5}$."},
      {t:"Semplifica $(2^{3})^{2}\\cdot 2$ come potenza di 2.",
       hs:["Nella potenza di potenza gli esponenti si moltiplicano: $(2^{3})^{2}=2^{6}$.","Ricorda che $2=2^{1}$: ora hai un prodotto di potenze con la stessa base."],
-      s:"$(2^{3})^{2}\\cdot 2=2^{6}\\cdot 2^{1}=2^{7}=128$."},
+      s:"$(2^{3})^{2}\\cdot 2=2^{6}\\cdot 2^{1}=2^{7}=128$.",a:[128,1]},
      {t:"Perché $7^{0}=1$? Giustificalo con la regola del quoziente.",
       hs:["Considera $7^{m}:7^{m}$ e applica la regola degli esponenti.","Ma un numero diverso da zero diviso per sé stesso quanto fa?"],
       s:"$7^{0}=7^{m}:7^{m}$ per la regola del quoziente (con $m=m$); e $7^{m}:7^{m}=1$ perché è un numero diviso sé stesso. Quindi $7^{0}=1$."},
      {t:"Calcola l'espressione $20-2\\cdot 3^{2}+ (4+1)$.",
       hs:["Prima le parentesi, poi la potenza, poi la moltiplicazione, infine somme e sottrazioni da sinistra.","$3^{2}=9$ e $(4+1)=5$."],
-      s:"$20-2\\cdot 3^{2}+(4+1)=20-2\\cdot 9+5=20-18+5=2+5=7$."},
+      s:"$20-2\\cdot 3^{2}+(4+1)=20-2\\cdot 9+5=20-18+5=2+5=7$.",a:[7,1]},
      {t:"Calcola $[\\,(6-4)^{3}+5\\cdot 2\\,]:3^{1}$.",
       hs:["Comincia dalla parentesi tonda più interna: $6-4$.","Poi la potenza e la moltiplicazione dentro la quadra, quindi la divisione finale."],
-      s:"$(6-4)^{3}=2^{3}=8$; dentro la quadra $8+5\\cdot 2=8+10=18$; infine $18:3^{1}=18:3=6$."}
+      s:"$(6-4)^{3}=2^{3}=8$; dentro la quadra $8+5\\cdot 2=8+10=18$; infine $18:3^{1}=18:3=6$.",a:[6,1]}
    ]},
    {id:"quiz",label:"Quiz",type:"quiz"}
   ]
@@ -1730,22 +1741,22 @@ $$ \\mathrm{MCD}(a,b)\\cdot \\mathrm{mcm}(a,b)=a\\cdot b $$
    {id:"esercizi",label:"Esercizi",type:"ex",items:[
      {t:"Calcola $\\mathrm{MCD}(18,24)$ con la scomposizione in fattori primi.",
       hs:["Scomponi: $18=2\\cdot 3^{2}$, $24=2^{3}\\cdot 3$.","Prendi i fattori comuni con l'esponente più piccolo."],
-      s:"Fattori comuni $2$ e $3$, con esponente minore: $2^{1}\\cdot 3^{1}=6$. Quindi $\\mathrm{MCD}(18,24)=6$."},
+      s:"Fattori comuni $2$ e $3$, con esponente minore: $2^{1}\\cdot 3^{1}=6$. Quindi $\\mathrm{MCD}(18,24)=6$.",a:[6,1]},
      {t:"Calcola $\\mathrm{mcm}(18,24)$ e verifica la relazione con il MCD.",
       hs:["Prendi tutti i fattori, comuni e non, con l'esponente maggiore.","$2^{3}\\cdot 3^{2}$; poi controlla che $\\mathrm{MCD}\\cdot\\mathrm{mcm}=18\\cdot 24$."],
-      s:"$\\mathrm{mcm}=2^{3}\\cdot 3^{2}=72$. Verifica: $6\\cdot 72=432=18\\cdot 24$. <svg viewBox='0 0 24 24' width='14' height='14' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' style='vertical-align:-1px'><path d='M20 6 9 17l-5-5'/></svg>"},
+      s:"$\\mathrm{mcm}=2^{3}\\cdot 3^{2}=72$. Verifica: $6\\cdot 72=432=18\\cdot 24$. <svg viewBox='0 0 24 24' width='14' height='14' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' style='vertical-align:-1px'><path d='M20 6 9 17l-5-5'/></svg>",a:[72,1]},
      {t:"Trova $\\mathrm{MCD}(48,36)$ con l'algoritmo di Euclide.",
       hs:["Dividi il maggiore per il minore e considera il resto.","$48=36\\cdot 1+12$; poi dividi 36 per 12."],
-      s:"$48=36\\cdot 1+12$; $36=12\\cdot 3+0$. L'ultimo divisore con resto zero è $12$: $\\mathrm{MCD}(48,36)=12$."},
+      s:"$48=36\\cdot 1+12$; $36=12\\cdot 3+0$. L'ultimo divisore con resto zero è $12$: $\\mathrm{MCD}(48,36)=12$.",a:[12,1]},
      {t:"Due numeri sono $14$ e $15$. Sono primi tra loro? Quanto vale il loro mcm?",
       hs:["Cerca eventuali divisori comuni: $14=2\\cdot 7$, $15=3\\cdot 5$.","Se il MCD è 1, il mcm è il prodotto."],
       s:"Non hanno fattori comuni, quindi $\\mathrm{MCD}=1$: sono primi tra loro. Allora $\\mathrm{mcm}(14,15)=14\\cdot 15=210$."},
      {t:"Due luci lampeggiano: una ogni 12 secondi, l'altra ogni 18. Se lampeggiano insieme ora, fra quanti secondi torneranno a lampeggiare insieme?",
       hs:["\"Insieme di nuovo\" significa un istante multiplo di entrambi i periodi: è un mcm.","$\\mathrm{mcm}(12,18)$: scomponi $12=2^{2}\\cdot 3$, $18=2\\cdot 3^{2}$."],
-      s:"$\\mathrm{mcm}(12,18)=2^{2}\\cdot 3^{2}=36$. Torneranno a lampeggiare insieme dopo $36$ secondi."},
+      s:"$\\mathrm{mcm}(12,18)=2^{2}\\cdot 3^{2}=36$. Torneranno a lampeggiare insieme dopo $36$ secondi.",a:[36,1]},
      {t:"Si vogliono tagliare due nastri lunghi 60 cm e 84 cm in pezzi uguali, della massima lunghezza possibile, senza avanzi. Quanto è lungo ogni pezzo e quanti pezzi in tutto?",
       hs:["\"Pezzi uguali il più lunghi possibile senza avanzi\": la lunghezza è un divisore comune massimo, cioè un MCD.","$60=2^{2}\\cdot 3\\cdot 5$, $84=2^{2}\\cdot 3\\cdot 7$: fattori comuni con esponente minore."],
-      s:"$\\mathrm{MCD}(60,84)=2^{2}\\cdot 3=12$ cm per pezzo. Pezzi: $60:12+84:12=5+7=12$ pezzi in tutto."}
+      s:"$\\mathrm{MCD}(60,84)=2^{2}\\cdot 3=12$ cm per pezzo. Pezzi: $60:12+84:12=5+7=12$ pezzi in tutto.",a:[12,1]}
    ]},
    {id:"quiz",label:"Quiz",type:"quiz"}
   ]
@@ -2339,6 +2350,16 @@ function render(scroll){
       const N=hints.length;
       const e=document.createElement("div");e.className="ex";
       e.innerHTML="<span class='num'>Esercizio "+(i+1)+"</span><div>"+it.t+"</div>";
+      if(it.a){
+        const iw=document.createElement('div');iw.className='ex-check';
+        const inp=document.createElement('input');inp.type='text';inp.className='ex-in';inp.placeholder='La tua risposta (es. 42)';inp.setAttribute('aria-label','La tua risposta');
+        const vb=document.createElement('button');vb.className='btn';vb.type='button';vb.textContent='Verifica';
+        const fb=document.createElement('div');fb.className='ex-fb';
+        iw.appendChild(inp);iw.appendChild(vb);iw.appendChild(fb);e.appendChild(iw);
+        const doCheck=()=>{const r=checkExAns(inp.value,it.a);if(r===null){fb.className='ex-fb warn';fb.textContent='Scrivi una risposta numerica.';return;}if(r){fb.className='ex-fb ok';fb.innerHTML="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6 9 17l-5-5'/></svg>"+' Corretto!';}else{fb.className='ex-fb no';fb.textContent='Non ancora — riprova o apri un suggerimento.';}};
+        vb.addEventListener('click',doCheck);
+        inp.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();doCheck();}});
+      }
 
       const meta=document.createElement("div");meta.className="hintmeta";
       if(N>0)meta.textContent=N+" suggeriment"+(N===1?"o":"i")+" disponibil"+(N===1?"e":"i")+" — si scoprono a uno a uno";
