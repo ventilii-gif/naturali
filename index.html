@@ -2291,7 +2291,7 @@ function buildTabs(){
   tabsEl.innerHTML="";
   AREAS.forEach((ar,i)=>{
     const b=document.createElement("button");
-    b.className="tab";b.type="button";b.textContent=ar.title;
+    b.className="tab";b.type="button";b.setAttribute("role","tab");b.textContent=ar.title;
     b.setAttribute("role","tab");
     b.setAttribute("aria-selected",i===CUR.a?"true":"false");
     b.addEventListener("click",()=>{ CUR={a:i,s:0}; render(true); });
@@ -2305,7 +2305,7 @@ function buildSub(){
   subBand.hidden=false;
   ar.sub.forEach((s,i)=>{
     const b=document.createElement("button");
-    b.className="subtab";b.type="button";b.textContent=s.label;
+    b.className="subtab";b.type="button";b.setAttribute("role","tab");b.textContent=s.label;
     b.setAttribute("role","tab");
     b.setAttribute("aria-selected",i===CUR.s?"true":"false");
     b.addEventListener("click",()=>{ CUR.s=i; render(true); });
