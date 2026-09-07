@@ -13,51 +13,51 @@
    Nessuna coppia rosso-verde (feedback: verde = corretto, ambra = da rivedere).
    ============================================================ */
 :root{
-  --bg:#f4f1e8;
-  --bg-2:#ebe6d9;
-  --surface:#fffdf7;
-  --surface-2:#f7f3e9;
-  --ink:#1d1b17;
-  --ink-soft:#4a453c;
-  --muted:#6d675b;
-  --line:#d9d2c2;
-  --line-strong:#bdb4a0;
-  --accent:#4c3fb5;
-  --accent-soft:#e6e3f8;
-  --accent-ink:#3a2f96;
-  --fa:#0d7f96;          /* numero A */
-  --fa-soft:#d8eef2;
-  --fb:#b06a12;          /* numero B */
-  --fb-soft:#f7e9d3;
-  --ok:#186b41;          /* risposta corretta: verde, distinto dal ciano/ambra */
-  --ok-soft:#dcf0e3;
-  --warn:#b06a12;
-  --warn-soft:#f7e9d3;
-  --shadow:0 1px 2px rgba(30,26,18,.06), 0 8px 24px rgba(30,26,18,.07);
+  --bg:#faf9f6;
+  --bg-2:#f0ede4;
+  --surface:#ffffff;
+  --surface-2:#f4f1e9;
+  --ink:#1f2933;
+  --ink-soft:#3d4a57;
+  --muted:#5a6b7b;
+  --line:#dfe3e8;
+  --line-strong:#c5ccd4;
+  --accent:#1d4e89;
+  --accent-soft:#e7f0fa;
+  --accent-ink:#12314f;
+  --fa:#3b7dc4;          /* numero A */
+  --fa-soft:#e2eef8;
+  --fb:#c9752a;          /* numero B */
+  --fb-soft:#faf0e3;
+  --ok:#1d4e89;          /* risposta corretta: blu (design system) */
+  --ok-soft:#e7f0fa;
+  --warn:#c9752a;
+  --warn-soft:#faf0e3;
+  --shadow:0 1px 2px rgba(18,49,79,.06), 0 8px 24px rgba(18,49,79,.07);
   --radius:14px;
   --maxw:1080px;
 }
 html[data-theme="dark"]{
-  --bg:#12141a;
-  --bg-2:#0d0f14;
-  --surface:#1a1d25;
-  --surface-2:#20242e;
-  --ink:#e7e4dc;
-  --ink-soft:#c3bfb5;
-  --muted:#948f85;
-  --line:#2c313d;
-  --line-strong:#3b4250;
-  --accent:#9d90ee;
-  --accent-soft:#262340;
-  --accent-ink:#b8aef5;
-  --fa:#5fbdd0;
-  --fa-soft:#16323a;
-  --fb:#dda45f;
-  --fb-soft:#392c17;
-  --ok:#5fcf8e;
-  --ok-soft:#163a26;
-  --warn:#dda45f;
-  --warn-soft:#392c17;
+  --bg:#0f1621;
+  --bg-2:#0b111a;
+  --surface:#18222e;
+  --surface-2:#1e2836;
+  --ink:#e6eaf0;
+  --ink-soft:#adb8c5;
+  --muted:#98a6b6;
+  --line:#2a3a4c;
+  --line-strong:#3a4a5c;
+  --accent:#3b82c9;
+  --accent-soft:#15273a;
+  --accent-ink:#cfe0f1;
+  --fa:#6aa0da;
+  --fa-soft:#15273a;
+  --fb:#d68a44;
+  --fb-soft:#382718;
+  --ok:#6aa0da;
+  --ok-soft:#15273a;
+  --warn:#d68a44;
+  --warn-soft:#382718;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
@@ -185,7 +185,7 @@ nav.main{background:var(--surface);border-bottom:1px solid var(--line)}
 }
 .subtab:hover{color:var(--ink);border-color:var(--accent)}
 .subtab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
-html[data-theme="dark"] .subtab[aria-selected="true"]{color:#14121f}
+html[data-theme="dark"] .subtab[aria-selected="true"]{color:#0f1621}
 .subtab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 /* ---------- CONTENUTO ---------- */
@@ -222,9 +222,9 @@ th{background:var(--surface-2);font-family:ui-sans-serif,system-ui,sans-serif;fo
 .btn:hover{border-color:var(--accent);color:var(--accent-ink)}
 .btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-html[data-theme="dark"] .btn.primary{color:#14121f}
+html[data-theme="dark"] .btn.primary{color:#0f1621}
 .btn.primary:hover{filter:brightness(1.08);color:#fff}
-html[data-theme="dark"] .btn.primary:hover{color:#14121f}
+html[data-theme="dark"] .btn.primary:hover{color:#0f1621}
 .btn:disabled{opacity:.42;cursor:not-allowed}
 .btnrow{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:.6em 0}
 
@@ -308,7 +308,7 @@ select{width:100%;padding:7px 9px;border-radius:8px;border:1px solid var(--line-
   font-family:ui-sans-serif,system-ui,sans-serif;color:var(--muted);background:var(--surface-2)}
 .qopt.sel{border-color:var(--accent);background:var(--accent-soft)}
 .qopt.sel .mk{background:var(--accent);border-color:var(--accent);color:#fff}
-html[data-theme="dark"] .qopt.sel .mk{color:#14121f}
+html[data-theme="dark"] .qopt.sel .mk{color:#0f1621}
 .qopt.sel-ok{border-color:var(--ok);background:var(--ok-soft)}
 .qopt.sel-ok .mk{background:var(--ok);border-color:var(--ok);color:var(--surface)}
 .qopt.sel-ko{border-color:var(--warn);background:var(--warn-soft)}
@@ -558,7 +558,7 @@ function readTheme(){
 function applyTheme(t,origin){
   const root=document.documentElement;
   const sweep=document.getElementById("sweep");
-  const next=t==="dark"?"#12141a":"#f4f1e8";
+  const next=t==="dark"?"#0f1621":"#faf9f6";
   const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const set=()=>{
     root.setAttribute("data-theme",t);
@@ -851,9 +851,9 @@ SIMS.numerazione={
       const xn=X(n);
       ctx.beginPath();ctx.arc(xn,ly,6+1.5*Math.sin(t*4),0,7);ctx.fillStyle=THEME.accent;ctx.fill();
       /* frecce precedente/successivo */
-      if(n>0){ label(ctx,"◄ precedente "+(n-1),X(n)-4,ly-24,11.5,THEME.fa,"right",600); }
+      if(n>0){ label(ctx,"precedente "+(n-1),X(n)-4,ly-24,11.5,THEME.fa,"right",600); }
       else{ label(ctx,"0: primo naturale, nessun precedente in ℕ",X(n)+10,ly-24,11.5,THEME.warn,"left",600); }
-      label(ctx,"successivo "+(n+1)+" ►",X(n)+4,ly-24,11.5,THEME.fb,"left",600);
+      label(ctx,"successivo "+(n+1)+"",X(n)+4,ly-24,11.5,THEME.fb,"left",600);
       ctx.restore();
     }
     const done=t>=4.4-1e-6;
@@ -1077,13 +1077,13 @@ SIMS.potenze={
 
 /* ---------- 5.5 DIVISIBILITÀ E NUMERI PRIMI — CRIVELLO DI ERATOSTENE ---------- */
 SIMS.divisibilita={
-  note:"Il crivello di Eratostene, passo per passo: si tiene il primo 2 e si cancellano i suoi multipli; poi 3, poi 5, poi 7. Ciò che sopravvive (tranne 1) è primo. Bastano i primi fino a √100 = 10, perché ogni numero composto ≤ 100 ha almeno un fattore primo ≤ 10. Usa «Passo ▶» e «◀ Passo» per avanzare una cancellazione alla volta, oppure lascia scorrere l'animazione.",
+  note:"Il crivello di Eratostene, passo per passo: si tiene il primo 2 e si cancellano i suoi multipli; poi 3, poi 5, poi 7. Ciò che sopravvive (tranne 1) è primo. Bastano i primi fino a √100 = 10, perché ogni numero composto ≤ 100 ha almeno un fattore primo ≤ 10. Usa «Passo avanti» e «Passo indietro» per avanzare una cancellazione alla volta, oppure lascia scorrere l'animazione.",
   controls:[ {id:"sp",label:"Velocità automatica",min:4,max:24,value:9} ],
   init(v,api){ api.state.manual=false; api.state.step=0; },
   extraButtons:[
-    {label:"◀ Passo",onClick:(v,api)=>{ api.state.manual=true; api.state.step=Math.max(0,api.state.step-1); }},
-    {label:"Passo ▶",onClick:(v,api)=>{ api.state.manual=true; api.state.step=Math.min(SIEVE.events.length,api.state.step+1); }},
-    {label:"Primo successivo ⏭",onClick:(v,api)=>{
+    {label:"Passo indietro",onClick:(v,api)=>{ api.state.manual=true; api.state.step=Math.max(0,api.state.step-1); }},
+    {label:"Passo avanti",onClick:(v,api)=>{ api.state.manual=true; api.state.step=Math.min(SIEVE.events.length,api.state.step+1); }},
+    {label:"Primo successivo ",onClick:(v,api)=>{
        api.state.manual=true; const len=SIEVE.events.length; let s=api.state.step;
        const cur = s<len ? SIEVE.crossedBy[SIEVE.events[s]] : null;
        if(cur===null){ api.state.step=len; return; }
@@ -1154,7 +1154,7 @@ SIMS.divisibilita={
     let step;
     if(done) step="Restano accesi i "+SIEVE.primeCount+" numeri primi minori di 100. Il numero 1 non è né primo né composto; il 2 è l'unico primo pari.";
     else if(lastN) step="Passo "+shown+": ho cancellato "+lastN+" = "+lastP+" · "+(lastN/lastP)+", multiplo di "+lastP+"."+(nextN?(" Prossimo: "+nextN+" = "+curP+" · "+(nextN/curP)+"."):"");
-    else step="Il primo 2 resta acceso (è primo); da lì si cancellano tutti i suoi multipli. Premi «Passo ▶» per procedere una cancellazione alla volta.";
+    else step="Il primo 2 resta acceso (è primo); da lì si cancellano tutti i suoi multipli. Premi «Passo avanti» per procedere una cancellazione alla volta.";
     api.setNarration("<span class='lab'>"+(done?"Crivello completato":(auto?"In corso — automatico":"Passo "+shown+" di "+len))+"</span><p>"+step+
       (done?" <strong>Premi «Torna in automatico» per rivederlo dall'inizio.</strong>":"")+"</p>",done);
   }
@@ -1666,7 +1666,7 @@ $$ 360 = 2^{3}\\cdot 3^{2}\\cdot 5 $$
 </div>
 </div>`},
    {id:"sim",label:"Simulazione",type:"sim",sim:"divisibilita",
-    intro:"Il crivello di Eratostene, passo per passo. Lascia scorrere l'animazione oppure usa «Passo ▶» e «◀ Passo» per procedere una cancellazione alla volta, e «Primo successivo ⏭» per completare i multipli del primo in corso. Alla fine restano accesi i 25 numeri primi minori di 100."},
+    intro:"Il crivello di Eratostene, passo per passo. Lascia scorrere l'animazione oppure usa «Passo avanti» e «Passo indietro» per procedere una cancellazione alla volta, e «Primo successivo » per completare i multipli del primo in corso. Alla fine restano accesi i 25 numeri primi minori di 100."},
    {id:"esercizi",label:"Esercizi",type:"ex",items:[
      {t:"Senza eseguire divisioni, stabilisci per quali fra $2,3,5,9$ è divisibile $2\\,340$.",
       hs:["Applica i criteri: ultima cifra per 2 e 5; somma delle cifre per 3 e 9.","La somma delle cifre di 2340 è $2+3+4+0=9$."],
@@ -1713,7 +1713,7 @@ $$ 60=2^{2}\\cdot 3\\cdot 5, \\quad 72=2^{3}\\cdot 3^{2} \\;\\Rightarrow\\; \\ma
 <h3>La relazione fondamentale</h3>
 <p>Per due numeri $a$ e $b$ vale sempre</p>
 $$ \\mathrm{MCD}(a,b)\\cdot \\mathrm{mcm}(a,b)=a\\cdot b $$
-<p>Quindi, noto uno dei due, si ricava l'altro: $\\mathrm{mcm}(a,b)=\\dfrac{a\\cdot b}{\\mathrm{MCD}(a,b)}$. Nell'esempio: $12\\cdot 360=4320=60\\cdot 72$. ✔</p>
+<p>Quindi, noto uno dei due, si ricava l'altro: $\\mathrm{mcm}(a,b)=\\dfrac{a\\cdot b}{\\mathrm{MCD}(a,b)}$. Nell'esempio: $12\\cdot 360=4320=60\\cdot 72$. <svg viewBox='0 0 24 24' width='14' height='14' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' style='vertical-align:-1px'><path d='M20 6 9 17l-5-5'/></svg></p>
 
 <div class="box note">
 <span class="lab">Numeri primi tra loro</span>
@@ -1733,7 +1733,7 @@ $$ \\mathrm{MCD}(a,b)\\cdot \\mathrm{mcm}(a,b)=a\\cdot b $$
       s:"Fattori comuni $2$ e $3$, con esponente minore: $2^{1}\\cdot 3^{1}=6$. Quindi $\\mathrm{MCD}(18,24)=6$."},
      {t:"Calcola $\\mathrm{mcm}(18,24)$ e verifica la relazione con il MCD.",
       hs:["Prendi tutti i fattori, comuni e non, con l'esponente maggiore.","$2^{3}\\cdot 3^{2}$; poi controlla che $\\mathrm{MCD}\\cdot\\mathrm{mcm}=18\\cdot 24$."],
-      s:"$\\mathrm{mcm}=2^{3}\\cdot 3^{2}=72$. Verifica: $6\\cdot 72=432=18\\cdot 24$. ✔"},
+      s:"$\\mathrm{mcm}=2^{3}\\cdot 3^{2}=72$. Verifica: $6\\cdot 72=432=18\\cdot 24$. <svg viewBox='0 0 24 24' width='14' height='14' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' style='vertical-align:-1px'><path d='M20 6 9 17l-5-5'/></svg>"},
      {t:"Trova $\\mathrm{MCD}(48,36)$ con l'algoritmo di Euclide.",
       hs:["Dividi il maggiore per il minore e considera il resto.","$48=36\\cdot 1+12$; poi dividi 36 per 12."],
       s:"$48=36\\cdot 1+12$; $36=12\\cdot 3+0$. L'ultimo divisore con resto zero è $12$: $\\mathrm{MCD}(48,36)=12$."},
@@ -1774,15 +1774,15 @@ $$ \\mathrm{MCD}(a,b)\\cdot \\mathrm{mcm}(a,b)=a\\cdot b $$
    l'ordine delle opzioni viene rimescolato a ogni tentativo.
    ============================================================ */
 const QUIZ={
-numerazione:[
+numerazione: [
  {q:"In questa applicazione, l'insieme dei numeri naturali è:",
   o:["$\\{0,1,2,3,\\dots\\}$","$\\{1,2,3,4,\\dots\\}$","$\\{\\dots,-2,-1,0,1,2,\\dots\\}$","$\\{0,1\\}$"],c:0,
   w:"Si adotta $\\mathbb{N}=\\{0,1,2,3,\\dots\\}$, con lo zero incluso. L'insieme senza zero si indica con $\\mathbb{N}^{*}$; quello con i negativi è $\\mathbb{Z}$."},
  {q:"Nel numero $3702$, la cifra $7$ vale:",
-  o:["$700$","$70$","$7$","$7000$"],c:0,
+  o:["$70$","$7$","$7000$","$700$"],c:3,
   w:"Il $7$ occupa la posizione delle centinaia, quindi vale $7\\cdot 100=700$. È il senso del sistema posizionale: la posizione decide il valore."},
  {q:"Il successivo di un numero naturale $n$ è:",
-  o:["$n+1$","$n-1$","$2n$","$n$"],c:0,
+  o:["$n-1$","$n+1$","$2n$","$n$"],c:1,
   w:"Il successivo si ottiene sempre aggiungendo 1. Poiché ogni naturale ha un successivo, l'insieme $\\mathbb{N}$ è infinito."},
  {q:"Che cosa si può dire dello zero in $\\mathbb{N}$?",
   o:["È il primo naturale e non ha precedente in $\\mathbb{N}$","È il più grande dei naturali","Non è un numero naturale","Ha come precedente $-1$"],c:0,
@@ -1791,123 +1791,126 @@ numerazione:[
   o:["infinito e discreto","finito","denso (tra due numeri ce n'è sempre un altro)","privo di ordine"],c:0,
   w:"È infinito (c'è sempre un successivo) e discreto: fra due naturali consecutivi non c'è nessun altro naturale. La densità è invece una proprietà dei razionali."},
  {q:"La base del nostro sistema di numerazione è:",
-  o:["$10$","$2$","$60$","dipende dal numero"],c:0,
+  o:["$2$","$60$","dipende dal numero","$10$"],c:3,
   w:"Usiamo la base 10, con dieci cifre da 0 a 9. La base 2 è quella dei computer, la 60 quella dei Babilonesi: il meccanismo posizionale è però lo stesso."},
  {q:"La scrittura $0057$ rappresenta il numero:",
-  o:["$57$","$5700$","$570$","un numero diverso da $57$"],c:0,
+  o:["$5700$","$570$","$57$","un numero diverso da $57$"],c:2,
   w:"Gli zeri a sinistra non hanno valore: $0057=57$. Lo zero conta solo in posizione interna o finale, come in $570$ o $507$."},
- {q:"Fra $909$ e $990$, il maggiore è:",o:["$990$","$909$","sono uguali","non confrontabili"],c:0,type:"problema",
+ {q:"Fra $909$ e $990$, il maggiore è:",
+  o:["$909$","$990$","sono uguali","non confrontabili"],c:1,
   w:"Hanno lo stesso numero di cifre e la stessa prima cifra (9); si confronta la seconda: $0<9$, quindi $909<990$."},
- {q:"Quante decine intere contiene $3702$?",o:["$370$","$372$","$37$","$3702$"],c:0,type:"problema",
+ {q:"Quante decine intere contiene $3702$?",
+  o:["$372$","$37$","$370$","$3702$"],c:2,
   w:"Le decine intere sono $\\lfloor 3702:10\\rfloor=370$, perché $3702=370\\cdot 10+2$. Le centinaia intere sarebbero invece $37$."},
- {q:"Quali numeri naturali $n$ soddisfano $598\\leq n&lt;601$?",o:["$598, 599, 600$","$598, 599, 600, 601$","$599, 600$","$598, 599, 600, 601, 602$"],c:0,type:"problema",
+ {q:"Quali numeri naturali $n$ soddisfano $598\\leq n&lt;601$?",
+  o:["$598, 599, 600, 601$","$598, 599, 600$","$599, 600$","$598, 599, 600, 601, 602$"],c:1,
   w:"Il simbolo $\\leq$ include $598$, mentre $&lt;$ esclude $601$. Restano $598, 599, 600$."}
-],
-addizione:[
+ ],
+addizione: [
  {q:"L'uguaglianza $a+b=b+a$ esprime la proprietà:",
-  o:["commutativa","associativa","distributiva","invariantiva"],c:0,
+  o:["associativa","distributiva","commutativa","invariantiva"],c:2,
   w:"La commutativa dice che l'ordine degli addendi non cambia la somma. L'associativa riguarda invece il raggruppamento."},
  {q:"L'elemento neutro dell'addizione è:",
   o:["$0$","$1$","$10$","non esiste"],c:0,
   w:"$a+0=a$ per ogni $a$: lo zero è l'elemento neutro dell'addizione. L'1 è l'elemento neutro della moltiplicazione."},
  {q:"In $\\mathbb{N}$ la differenza $a-b$ esiste:",
-  o:["solo se $a\\geq b$","solo se $a\\leq b$","sempre","solo se $a\\neq b$"],c:0,
+  o:["solo se $a\\leq b$","solo se $a\\geq b$","sempre","solo se $a\\neq b$"],c:1,
   w:"In $\\mathbb{N}$ non ci sono numeri negativi: $a-b$ è un naturale solo quando $a\\geq b$. Per esempio $5-8$ non esiste in $\\mathbb{N}$."},
  {q:"L'uguaglianza $a-b=c$ equivale a:",
-  o:["$c+b=a$","$c-b=a$","$c\\cdot b=a$","$b-c=a$"],c:0,
+  o:["$c-b=a$","$c\\cdot b=a$","$c+b=a$","$b-c=a$"],c:2,
   w:"La sottrazione è l'inversa dell'addizione: $a-b$ è il numero che, sommato a $b$, dà $a$. È anche la \"prova\" per verificare una sottrazione."},
  {q:"La sottrazione fra numeri naturali è:",
-  o:["né commutativa né associativa","commutativa","associativa","commutativa e associativa"],c:0,
+  o:["commutativa","né commutativa né associativa","associativa","commutativa e associativa"],c:1,
   w:"$8-5\\neq 5-8$ (non commutativa) e $(10-4)-2\\neq 10-(4-2)$ (non associativa). Vale però la proprietà invariantiva."},
  {q:"La proprietà invariantiva della sottrazione afferma che:",
   o:["aggiungendo lo stesso numero a minuendo e sottraendo, la differenza non cambia","la differenza raddoppia se raddoppiano i termini","si può cambiare l'ordine dei termini","la differenza è sempre pari"],c:0,
   w:"$a-b=(a+k)-(b+k)$: è utile per calcolare a mente, per esempio $73-28=75-30=45$."},
  {q:"Per calcolare $37+63+48$ conviene sommare prima:",
-  o:["$37+63=100$","$63+48$","$37+48$","è indifferente e scomodo"],c:0,type:"problema",
+  o:["$63+48$","$37+48$","è indifferente e scomodo","$37+63=100$"],c:3,
   w:"Grazie a commutativa e associativa si riordina: $37+63=100$, poi $100+48=148$. Cercare coppie che fanno multipli di 10 semplifica il calcolo."},
  {q:"Quale di queste differenze NON esiste in $\\mathbb{N}$?",
-  o:["$9-15$","$15-9$","$20-20$","$100-1$"],c:0,type:"problema",
+  o:["$15-9$","$20-20$","$100-1$","$9-15$"],c:3,
   w:"$9-15$ darebbe un numero negativo, che non appartiene a $\\mathbb{N}$. Le altre esistono: valgono $6$, $0$ e $99$."},
  {q:"Se $x+29=74$, allora $x$ vale:",
-  o:["$45$","$103$","$29$","$74$"],c:0,type:"problema",
-  w:"Si usa l'operazione inversa: $x=74-29=45$. Verifica: $45+29=74$. ✔"},
+  o:["$45$","$103$","$29$","$74$"],c:0,
+  w:"Si usa l'operazione inversa: $x=74-29=45$. Verifica: $45+29=74$. <svg viewBox='0 0 24 24' width='14' height='14' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' style='vertical-align:-1px'><path d='M20 6 9 17l-5-5'/></svg>"},
  {q:"In un cinema da 250 posti sono occupate 4 file da 18 posti e altre 96 poltrone. Quanti posti restano liberi?",
-  o:["$82$","$86$","$168$","$72$"],c:0,type:"problema",
+  o:["$86$","$82$","$168$","$72$"],c:1,
   w:"Occupati: $4\\cdot 18+96=72+96=168$. Liberi: $250-168=82$."}
-],
-moltiplicazione:[
+ ],
+moltiplicazione: [
  {q:"L'uguaglianza $a\\cdot b=b\\cdot a$ esprime la proprietà:",
   o:["commutativa","distributiva","associativa","invariantiva"],c:0,
   w:"L'ordine dei fattori non cambia il prodotto. Nello schieramento rettangolare corrisponde a ruotare la griglia di 90°."},
  {q:"L'elemento neutro della moltiplicazione è:",
-  o:["$1$","$0$","$10$","non esiste"],c:0,
+  o:["$0$","$10$","$1$","non esiste"],c:2,
   w:"$a\\cdot 1=a$ per ogni $a$. Lo zero è invece l'elemento assorbente: $a\\cdot 0=0$."},
  {q:"Quanto vale $a\\cdot 0$?",
-  o:["$0$","$a$","$1$","non è definito"],c:0,
+  o:["$a$","$0$","$1$","non è definito"],c:1,
   w:"Lo zero è l'elemento assorbente: qualsiasi numero moltiplicato per 0 dà 0. Da qui la legge di annullamento del prodotto."},
  {q:"La proprietà distributiva afferma che $a\\cdot(b+c)$ è uguale a:",
-  o:["$a\\cdot b+a\\cdot c$","$a\\cdot b+c$","$(a+b)\\cdot c$","$a+b\\cdot c$"],c:0,
+  o:["$a\\cdot b+c$","$(a+b)\\cdot c$","$a+b\\cdot c$","$a\\cdot b+a\\cdot c$"],c:3,
   w:"Il fattore esterno moltiplica ciascun addendo. È la base del calcolo mentale: $6\\cdot 12=6\\cdot 10+6\\cdot 2=72$."},
  {q:"Nella divisione con resto $a=b\\cdot q+r$, il resto soddisfa:",
-  o:["$0\\leq r&lt;b$","$0\\leq r&lt;q$","$r&gt;b$","$r=b$"],c:0,
+  o:["$0\\leq r&lt;q$","$r&gt;b$","$0\\leq r&lt;b$","$r=b$"],c:2,
   w:"Il resto è sempre non negativo e minore del divisore. Se raggiungesse $b$, si potrebbe formare un altro gruppo intero."},
  {q:"La divisione con resto $17:5$ dà:",
-  o:["quoziente 3, resto 2","quoziente 2, resto 3","quoziente 3, resto 3","quoziente 4, resto 0"],c:0,type:"problema",
+  o:["quoziente 3, resto 2","quoziente 2, resto 3","quoziente 3, resto 3","quoziente 4, resto 0"],c:0,
   w:"$17=5\\cdot 3+2$, con $0\\leq 2<5$. Il più grande multiplo di 5 sotto 17 è 15, e restano 2."},
  {q:"L'operazione $a:0$ (con $a\\neq 0$):",
   o:["non è definita","vale $0$","vale $a$","vale $1$"],c:0,
   w:"Se fosse $a:0=q$ dovrebbe valere $q\\cdot 0=a$, ma $q\\cdot 0=0$ per ogni $q$: impossibile. Non si divide per zero."},
  {q:"Quanto vale $0:5$?",
-  o:["$0$","$5$","non è definito","$1$"],c:0,
+  o:["$5$","$0$","non è definito","$1$"],c:1,
   w:"$0:5=0$ perché $0\\cdot 5=0$. Attenzione: dividere lo zero è lecito, dividere PER zero no."},
  {q:"Quanto vale $25\\cdot 16$?",
-  o:["$400$","$410$","$200$","$625$"],c:0,type:"problema",
+  o:["$410$","$200$","$625$","$400$"],c:3,
   w:"$25\\cdot 16=25\\cdot(10+6)=250+150=400$. Oppure $25\\cdot 4=100$ e $100\\cdot 4=400$."},
  {q:"In una divisione con resto, il resto è sempre:",
-  o:["minore del divisore","maggiore del divisore","uguale al quoziente","uguale al dividendo"],c:0,type:"problema",
+  o:["maggiore del divisore","minore del divisore","uguale al quoziente","uguale al dividendo"],c:1,
   w:"Per definizione $0\\leq r&lt;b$: il resto è minore del divisore. Se fosse $\\geq b$ si formerebbe un altro gruppo, aumentando il quoziente."}
-],
-potenze:[
+ ],
+potenze: [
  {q:"La potenza $a^{n}$ (con $n\\geq 1$) è:",
-  o:["il prodotto di $n$ fattori uguali ad $a$","$a$ moltiplicato per $n$","$a$ sommato $n$ volte","$n$ moltiplicato per $a$"],c:0,
+  o:["$a$ moltiplicato per $n$","$a$ sommato $n$ volte","il prodotto di $n$ fattori uguali ad $a$","$n$ moltiplicato per $a$"],c:2,
   w:"$a^{n}=a\\cdot a\\cdot\\dots\\cdot a$ ($n$ fattori). Non confondere con $a\\cdot n$: $2^{5}=32$, mentre $2\\cdot 5=10$."},
  {q:"Per ogni $a\\neq 0$, quanto vale $a^{0}$?",
-  o:["$1$","$0$","$a$","non è definito"],c:0,
+  o:["$0$","$a$","$1$","non è definito"],c:2,
   w:"Vale 1. Segue dalla regola del quoziente: $a^{m}:a^{m}=a^{0}$, e un numero diviso sé stesso fa 1."},
  {q:"Il prodotto di potenze con la stessa base, $a^{m}\\cdot a^{n}$, vale:",
-  o:["$a^{m+n}$","$a^{m\\cdot n}$","$a^{m-n}$","$(a\\cdot a)^{m+n}$"],c:0,
+  o:["$a^{m\\cdot n}$","$a^{m+n}$","$a^{m-n}$","$(a\\cdot a)^{m+n}$"],c:1,
   w:"Con la stessa base gli esponenti si sommano, perché si accostano i fattori: $2^{3}\\cdot 2^{4}=2^{7}$."},
  {q:"La potenza di potenza $(a^{m})^{n}$ vale:",
-  o:["$a^{m\\cdot n}$","$a^{m+n}$","$a^{m^{n}}$","$(a\\cdot m)^{n}$"],c:0,
+  o:["$a^{m+n}$","$a^{m^{n}}$","$(a\\cdot m)^{n}$","$a^{m\\cdot n}$"],c:3,
   w:"Gli esponenti si moltiplicano: $(3^{2})^{4}=3^{8}$. Da non confondere con il prodotto di potenze, dove si sommano."},
  {q:"Quanto vale $2^{3}+2^{4}$?",
-  o:["$24$","$2^{7}$","$128$","$2^{12}$"],c:0,type:"problema",
+  o:["$2^{7}$","$24$","$128$","$2^{12}$"],c:1,
   w:"Le proprietà delle potenze valgono per prodotti e quozienti, NON per le somme: $2^{3}+2^{4}=8+16=24$, non $2^{7}$."},
  {q:"Il prodotto $a^{n}\\cdot b^{n}$ (stesso esponente) vale:",
-  o:["$(a\\cdot b)^{n}$","$(a+b)^{n}$","$a^{n}+b^{n}$","$(ab)^{2n}$"],c:0,
+  o:["$(a+b)^{n}$","$a^{n}+b^{n}$","$(ab)^{2n}$","$(a\\cdot b)^{n}$"],c:3,
   w:"Con lo stesso esponente si moltiplicano le basi: $2^{3}\\cdot 5^{3}=10^{3}=1000$. Molto comodo per semplificare."},
  {q:"Quanto vale $3^{4}$?",
-  o:["$81$","$12$","$64$","$243$"],c:0,type:"problema",
+  o:["$12$","$81$","$64$","$243$"],c:1,
   w:"$3^{4}=3\\cdot 3\\cdot 3\\cdot 3=81$. $12=3\\cdot 4$, $64=2^{6}$, $243=3^{5}$: distrattori tipici."},
  {q:"L'ordine corretto di esecuzione delle operazioni è:",
   o:["parentesi, potenze, moltiplicazioni e divisioni, addizioni e sottrazioni","potenze, parentesi, somme, prodotti","sempre da sinistra a destra","prima somme e sottrazioni, poi il resto"],c:0,
   w:"È la gerarchia convenzionale. Dentro lo stesso livello (per esempio $\\times$ e $:$) si procede da sinistra a destra."},
  {q:"Quanto vale $2+3\\cdot 4^{2}$?",
-  o:["$50$","$80$","$400$","$20$"],c:0,type:"problema",
+  o:["$50$","$80$","$400$","$20$"],c:0,
   w:"Prima la potenza ($4^{2}=16$), poi la moltiplicazione ($3\\cdot 16=48$), infine la somma: $2+48=50$. Il valore $80$ verrebbe da $(2+3)\\cdot 16$."},
  {q:"Quanto vale $a^{1}$?",
   o:["$a$","$1$","$0$","$a^{2}$"],c:0,
   w:"$a^{1}=a$: un solo fattore. Da non confondere con $a^{0}=1$ (per $a\\neq 0$)."}
-],
-divisibilita:[
+ ],
+divisibilita: [
  {q:"Dire che $b$ divide $a$ (con $b\\neq 0$) significa che:",
-  o:["la divisione $a:b$ è esatta, con resto 0","la divisione $a:b$ ha resto positivo","$b$ è minore di $a$","$b$ è un numero primo"],c:0,
+  o:["la divisione $a:b$ ha resto positivo","$b$ è minore di $a$","$b$ è un numero primo","la divisione $a:b$ è esatta, con resto 0"],c:3,
   w:"$b\\mid a$ significa che esiste $k$ con $a=b\\cdot k$: la divisione è esatta. Allora $a$ è multiplo di $b$ e $b$ è divisore di $a$."},
  {q:"Un numero è divisibile per 3 quando:",
-  o:["la somma delle sue cifre è divisibile per 3","l'ultima cifra è 3","finisce per 0 o 3","è dispari"],c:0,
+  o:["l'ultima cifra è 3","finisce per 0 o 3","la somma delle sue cifre è divisibile per 3","è dispari"],c:2,
   w:"Criterio del 3: si sommano le cifre e si controlla quella somma. Per esempio $2340$: $2+3+4+0=9$, divisibile per 3 (e per 9)."},
  {q:"Un numero naturale $p\\geq 2$ è primo quando:",
-  o:["ha esattamente due divisori: 1 e sé stesso","è dispari","non è pari","ha molti divisori"],c:0,
+  o:["è dispari","non è pari","ha esattamente due divisori: 1 e sé stesso","ha molti divisori"],c:2,
   w:"La definizione conta i divisori: esattamente due. Se ne ha di più è composto. Non è questione di parità: $2$ è primo, $9$ è composto."},
  {q:"Il numero 1:",
   o:["non è né primo né composto","è primo","è composto","è il più piccolo dei primi"],c:0,
@@ -1916,115 +1919,115 @@ divisibilita:[
   o:["$2$","$0$","$4$","non esiste"],c:0,
   w:"Il 2 è primo e pari; ogni altro numero pari ha 2 come divisore in più, quindi è composto. Tutti i primi oltre il 2 sono dispari."},
  {q:"La scomposizione in fattori primi di $360$ è:",
-  o:["$2^{3}\\cdot 3^{2}\\cdot 5$","$2^{2}\\cdot 3^{2}\\cdot 5$","$2^{3}\\cdot 3\\cdot 5^{2}$","$2\\cdot 3\\cdot 5$"],c:0,type:"problema",
+  o:["$2^{3}\\cdot 3^{2}\\cdot 5$","$2^{2}\\cdot 3^{2}\\cdot 5$","$2^{3}\\cdot 3\\cdot 5^{2}$","$2\\cdot 3\\cdot 5$"],c:0,
   w:"$360=2\\cdot 180=2^{2}\\cdot 90=2^{3}\\cdot 45=2^{3}\\cdot 3^{2}\\cdot 5$. Per il teorema fondamentale, questa scomposizione è unica."},
  {q:"Per quali di questi numeri è divisibile $2340$?",
-  o:["per $2, 3, 5$ e $9$","solo per $2$ e $5$","solo per $3$","per $2$ e $3$ ma non per $5$"],c:0,type:"problema",
+  o:["solo per $2$ e $5$","per $2, 3, 5$ e $9$","solo per $3$","per $2$ e $3$ ma non per $5$"],c:1,
   w:"Ultima cifra 0 → divisibile per 2 e 5; somma cifre $=9$ → divisibile per 3 e 9. Quindi per tutti e quattro."},
  {q:"I numeri primi sono:",
-  o:["infiniti","in numero finito","tutti dispari","in numero pari"],c:0,
+  o:["in numero finito","infiniti","tutti dispari","in numero pari"],c:1,
   w:"Euclide dimostrò più di duemila anni fa che i primi sono infiniti. Non sono tutti dispari: il 2 è primo e pari."},
  {q:"Il numero $91$ è:",
-  o:["composto, perché $91=7\\cdot 13$","primo","divisibile per 3","pari"],c:0,type:"problema",
+  o:["primo","divisibile per 3","pari","composto, perché $91=7\\cdot 13$"],c:3,
   w:"$91=7\\cdot 13$: ha divisori oltre a 1 e sé stesso, quindi è composto. È un classico numero che \"sembra\" primo ma non lo è."},
  {q:"Quanti divisori ha $24$?",
-  o:["$8$","$6$","$12$","$4$"],c:0,type:"problema",
+  o:["$6$","$8$","$12$","$4$"],c:1,
   w:"I divisori sono $\\{1,2,3,4,6,8,12,24\\}$: in tutto 8. Si trovano a coppie: $1\\cdot 24, 2\\cdot 12, 3\\cdot 8, 4\\cdot 6$."}
-],
-mcdmcm:[
+ ],
+mcdmcm: [
  {q:"Il MCD di due numeri è:",
-  o:["il più grande dei loro divisori comuni","il più piccolo dei loro multipli comuni","il loro prodotto","la loro somma"],c:0,
+  o:["il più piccolo dei loro multipli comuni","il loro prodotto","il più grande dei loro divisori comuni","la loro somma"],c:2,
   w:"MCD = Massimo Comune Divisore. Essendo un divisore, non supera mai il più piccolo dei due numeri."},
  {q:"Il mcm di due numeri è:",
   o:["il più piccolo dei loro multipli comuni (diverso da 0)","il più grande dei loro divisori comuni","il loro prodotto","la loro differenza"],c:0,
   w:"mcm = minimo comune multiplo. Essendo un multiplo, non è mai minore del più grande dei due numeri."},
  {q:"Con la scomposizione in fattori primi, il MCD si ottiene moltiplicando:",
-  o:["i fattori comuni, con l'esponente minore","tutti i fattori, con l'esponente maggiore","i fattori comuni, con l'esponente maggiore","solo i fattori non comuni"],c:0,
+  o:["tutti i fattori, con l'esponente maggiore","i fattori comuni, con l'esponente maggiore","i fattori comuni, con l'esponente minore","solo i fattori non comuni"],c:2,
   w:"MCD: fattori COMUNI con esponente MINORE. Esempio: $60=2^{2}\\cdot 3\\cdot 5$, $72=2^{3}\\cdot 3^{2}$ danno $\\mathrm{MCD}=2^{2}\\cdot 3=12$."},
  {q:"Con la scomposizione in fattori primi, il mcm si ottiene moltiplicando:",
-  o:["tutti i fattori (comuni e non comuni), con l'esponente maggiore","solo i fattori comuni, con l'esponente minore","solo i fattori comuni, con l'esponente maggiore","i fattori non comuni con esponente minore"],c:0,
+  o:["solo i fattori comuni, con l'esponente minore","solo i fattori comuni, con l'esponente maggiore","i fattori non comuni con esponente minore","tutti i fattori (comuni e non comuni), con l'esponente maggiore"],c:3,
   w:"mcm: TUTTI i fattori con esponente MAGGIORE. Esempio: $60$ e $72$ danno $\\mathrm{mcm}=2^{3}\\cdot 3^{2}\\cdot 5=360$."},
  {q:"Per due numeri $a$ e $b$ vale sempre:",
   o:["$\\mathrm{MCD}(a,b)\\cdot\\mathrm{mcm}(a,b)=a\\cdot b$","$\\mathrm{MCD}+\\mathrm{mcm}=a+b$","$\\mathrm{MCD}\\cdot\\mathrm{mcm}=a+b$","$\\mathrm{mcm}=a\\cdot b$ sempre"],c:0,
   w:"La relazione fondamentale $\\mathrm{MCD}\\cdot\\mathrm{mcm}=a\\cdot b$ permette di ricavare uno noto l'altro."},
  {q:"Due numeri si dicono \"primi tra loro\" quando:",
-  o:["il loro MCD è 1","sono entrambi numeri primi","il loro mcm è 1","sono consecutivi"],c:0,
+  o:["sono entrambi numeri primi","il loro MCD è 1","il loro mcm è 1","sono consecutivi"],c:1,
   w:"Primi tra loro (coprimi) significa nessun divisore comune oltre l'1, cioè $\\mathrm{MCD}=1$. Esempio: 8 e 15, che non sono singolarmente primi."},
  {q:"Se due numeri sono primi tra loro, il loro mcm è:",
   o:["il loro prodotto","$1$","la loro somma","il maggiore dei due"],c:0,
   w:"Se $\\mathrm{MCD}=1$, dalla relazione fondamentale $\\mathrm{mcm}=a\\cdot b$. Per 8 e 15: $\\mathrm{mcm}=120$."},
  {q:"Quanto vale $\\mathrm{MCD}(60,72)$?",
-  o:["$12$","$6$","$360$","$24$"],c:0,type:"problema",
+  o:["$6$","$360$","$24$","$12$"],c:3,
   w:"$60=2^{2}\\cdot 3\\cdot 5$, $72=2^{3}\\cdot 3^{2}$: fattori comuni con esponente minore $2^{2}\\cdot 3=12$. Il $360$ è invece il mcm."},
  {q:"Quanto vale $\\mathrm{mcm}(12,18)$?",
-  o:["$36$","$6$","$216$","$30$"],c:0,type:"problema",
+  o:["$6$","$36$","$216$","$30$"],c:1,
   w:"$12=2^{2}\\cdot 3$, $18=2\\cdot 3^{2}$: tutti i fattori con esponente maggiore $2^{2}\\cdot 3^{2}=36$. Il $6$ è il MCD, il $216$ è il prodotto."},
  {q:"Due luci lampeggiano ogni 12 s e ogni 18 s, insieme adesso. Torneranno insieme dopo:",
-  o:["$36$ secondi","$6$ secondi","$30$ secondi","$216$ secondi"],c:0,type:"problema",
+  o:["$6$ secondi","$36$ secondi","$30$ secondi","$216$ secondi"],c:1,
   w:"È un problema di mcm: $\\mathrm{mcm}(12,18)=36$. Dopo 36 secondi entrambe hanno completato un numero intero di cicli."}
-],
-riepilogo:[
+ ],
+riepilogo: [
  {q:"In questa applicazione, l'insieme $\\mathbb{N}$ è:",
-  o:["$\\{0,1,2,3,\\dots\\}$","$\\{1,2,3,\\dots\\}$","l'insieme dei numeri interi","l'insieme dei numeri con la virgola"],c:0,
+  o:["$\\{1,2,3,\\dots\\}$","$\\{0,1,2,3,\\dots\\}$","l'insieme dei numeri interi","l'insieme dei numeri con la virgola"],c:1,
   w:"Si adotta $\\mathbb{N}=\\{0,1,2,3,\\dots\\}$, zero incluso."},
  {q:"Nel numero $5060$, la cifra $5$ vale:",
-  o:["$5000$","$500$","$50$","$5$"],c:0,type:"problema",
+  o:["$500$","$50$","$5000$","$5$"],c:2,
   w:"Il 5 è nella posizione delle migliaia: vale $5\\cdot 1000=5000$."},
  {q:"Il precedente di $1000$ è:",
-  o:["$999$","$1001$","$100$","$0$"],c:0,type:"problema",
+  o:["$1001$","$100$","$0$","$999$"],c:3,
   w:"Il precedente si ottiene togliendo 1: $1000-1=999$."},
  {q:"L'elemento neutro dell'addizione è:",
-  o:["$0$","$1$","$10$","non esiste"],c:0,
+  o:["$1$","$10$","$0$","non esiste"],c:2,
   w:"$a+0=a$. L'1 è invece il neutro della moltiplicazione."},
  {q:"La differenza $5-8$ in $\\mathbb{N}$:",
   o:["non è definita","vale $-3$","vale $3$","vale $0$"],c:0,
   w:"In $\\mathbb{N}$ non esistono numeri negativi: $a-b$ esiste solo se $a\\geq b$. Qui $5<8$."},
  {q:"La proprietà usata in $a\\cdot(b+c)=a\\cdot b+a\\cdot c$ è la:",
-  o:["distributiva","commutativa","associativa","invariantiva"],c:0,
+  o:["commutativa","distributiva","associativa","invariantiva"],c:1,
   w:"La distributiva collega moltiplicazione e addizione, ed è il fondamento del calcolo in colonna."},
  {q:"Quanto vale $a\\cdot 0$?",
   o:["$0$","$a$","$1$","non definito"],c:0,
   w:"Lo zero è l'elemento assorbente della moltiplicazione: $a\\cdot 0=0$ sempre."},
  {q:"La divisione con resto $100:7$ dà:",
-  o:["quoziente 14, resto 2","quoziente 14, resto 1","quoziente 13, resto 9","quoziente 15, resto 5"],c:0,type:"problema",
+  o:["quoziente 14, resto 1","quoziente 13, resto 9","quoziente 14, resto 2","quoziente 15, resto 5"],c:2,
   w:"$7\\cdot 14=98$, e $100-98=2$: quoziente 14, resto 2, con $2<7$. (Un resto 9 sarebbe impossibile, perché deve essere minore di 7.)"},
  {q:"L'operazione $a:0$ con $a\\neq 0$:",
-  o:["non è definita","vale $0$","vale $a$","vale $1$"],c:0,
+  o:["vale $0$","vale $a$","vale $1$","non è definita"],c:3,
   w:"Non si divide per zero: nessun numero moltiplicato per 0 può dare $a\\neq 0$."},
  {q:"Quanto vale $2^{5}$?",
-  o:["$32$","$10$","$25$","$16$"],c:0,type:"problema",
+  o:["$10$","$32$","$25$","$16$"],c:1,
   w:"$2^{5}=2\\cdot 2\\cdot 2\\cdot 2\\cdot 2=32$. $10=2\\cdot 5$ e $16=2^{4}$ sono errori tipici."},
  {q:"Il quoziente di potenze con la stessa base, $a^{m}:a^{n}$, vale:",
-  o:["$a^{m-n}$","$a^{m+n}$","$a^{m\\cdot n}$","$a^{n-m}$"],c:0,
+  o:["$a^{m+n}$","$a^{m\\cdot n}$","$a^{m-n}$","$a^{n-m}$"],c:2,
   w:"Con la stessa base, nel quoziente gli esponenti si sottraggono: $5^{6}:5^{2}=5^{4}$."},
  {q:"Quanto vale $3+2\\cdot 5^{2}$?",
-  o:["$53$","$125$","$145$","$28$"],c:0,type:"problema",
+  o:["$125$","$53$","$145$","$28$"],c:1,
   w:"Prima la potenza ($5^{2}=25$), poi il prodotto ($2\\cdot 25=50$), infine la somma: $3+50=53$. Il $125$ verrebbe da $(3+2)\\cdot 25$."},
  {q:"Un numero è divisibile per 9 quando:",
   o:["la somma delle sue cifre è divisibile per 9","l'ultima cifra è 9","è dispari","finisce per 0"],c:0,
   w:"Criterio del 9: si sommano le cifre. Esempio: $8514\\to 8+5+1+4=18$, divisibile per 9."},
  {q:"Il numero 1 è:",
-  o:["né primo né composto","primo","composto","il più piccolo dei primi"],c:0,
+  o:["primo","composto","il più piccolo dei primi","né primo né composto"],c:3,
   w:"L'1 ha un solo divisore: non è primo né composto. Il più piccolo primo è 2."},
  {q:"La scomposizione in fattori primi di $84$ è:",
-  o:["$2^{2}\\cdot 3\\cdot 7$","$2\\cdot 3\\cdot 7$","$2^{3}\\cdot 3$","$2^{2}\\cdot 21$"],c:0,type:"problema",
+  o:["$2\\cdot 3\\cdot 7$","$2^{2}\\cdot 3\\cdot 7$","$2^{3}\\cdot 3$","$2^{2}\\cdot 21$"],c:1,
   w:"$84=2\\cdot 42=2^{2}\\cdot 21=2^{2}\\cdot 3\\cdot 7$. Il $21$ non è primo, quindi va scomposto ancora."},
  {q:"Quanti sono i numeri primi minori di 100?",
-  o:["$25$","$20$","$30$","$24$"],c:0,type:"problema",
+  o:["$20$","$30$","$24$","$25$"],c:3,
   w:"Sono 25, come mostra il crivello di Eratostene: 2, 3, 5, 7, 11, …, 97."},
  {q:"Quanto vale $\\mathrm{MCD}(48,36)$?",
-  o:["$12$","$6$","$144$","$4$"],c:0,type:"problema",
+  o:["$12$","$6$","$144$","$4$"],c:0,
   w:"Con Euclide: $48=36\\cdot 1+12$, $36=12\\cdot 3+0$: MCD $=12$. Il $144$ è il mcm."},
  {q:"Quanto vale $\\mathrm{mcm}(8,12)$?",
-  o:["$24$","$4$","$96$","$48$"],c:0,type:"problema",
+  o:["$24$","$4$","$96$","$48$"],c:0,
   w:"$8=2^{3}$, $12=2^{2}\\cdot 3$: tutti i fattori con esponente maggiore $2^{3}\\cdot 3=24$. Il $4$ è il MCD, il $96$ è il prodotto."},
  {q:"Se $\\mathrm{MCD}(a,b)=6$ e $a\\cdot b=360$, allora $\\mathrm{mcm}(a,b)$ vale:",
-  o:["$60$","$6$","$2160$","$354$"],c:0,type:"problema",
+  o:["$6$","$2160$","$60$","$354$"],c:2,
   w:"Dalla relazione $\\mathrm{MCD}\\cdot\\mathrm{mcm}=a\\cdot b$: $\\mathrm{mcm}=360:6=60$."},
  {q:"I numeri $8$ e $15$ sono:",
-  o:["primi tra loro (MCD = 1)","entrambi numeri primi","uno multiplo dell'altro","numeri composti con MCD = 4"],c:0,type:"problema",
+  o:["entrambi numeri primi","uno multiplo dell'altro","numeri composti con MCD = 4","primi tra loro (MCD = 1)"],c:3,
   w:"$8=2^{3}$ e $15=3\\cdot 5$ non hanno fattori comuni: $\\mathrm{MCD}=1$, quindi sono primi tra loro (pur non essendo singolarmente primi)."}
-]
+ ]
 };
 
 /* ============================================================
